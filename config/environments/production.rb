@@ -82,15 +82,9 @@ Rails.application.configure do
     reply_to: ENV['MAILER_DEFAULT_REPLY_TO']
   }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              ENV['MAILER_ADDRESS'],
-    domain:               ENV['MAILER_DOMAIN'],
-    user_name:            ENV['MAILER_USERNAME'],
-    password:             ENV['MAILER_PASSWORD'],
-    port:                 587,
-    authentication:       'plain',
-    enable_starttls_auto: true }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
