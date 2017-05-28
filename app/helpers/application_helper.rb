@@ -1,5 +1,10 @@
 module ApplicationHelper
   def google_tag_manager?
-    Rails.env.production? && ENV['GOOGLE_TAG_MANAGER_ENABLED']
+    false
+    # Rails.env.production? && ENV['GOOGLE_TAG_MANAGER_ENABLED']
+  end
+
+  def registerable?
+    Devise.mappings[:user].registerable?
   end
 end
